@@ -36,9 +36,16 @@ defined( 'ABSPATH' ) or die( 'Hey, you can\'t access this file, you silly human!
 class FaisalPlugin 
 {
     //methods
+
+    //public methods - accessible from outside the class
+    // protected methods - accessible from within the class and its child classes
+    // private methods - accessible only from within the class
+
     function __construct() {
         add_action( 'init', array( $this, 'custom_post_type' ) );
         // this will only run the custom_post_type method if the class exists
+        $this->print_stuff(); // this will only run the register method if the class exists
+        $this->create_post_type();
     }
 
     function register() {
@@ -73,6 +80,29 @@ class FaisalPlugin
             wp_enqueue_style( 'mypluginstyle', plugins_url( '/assets/my-style.css', __FILE__ ) );
             wp_enqueue_script( 'mypluginscript', plugins_url( '/assets/my-script.js', __FILE__ ) );
         }
+
+        protected function create_post_type(){
+            add_action( 'init', array( $this, 'custom_post_type' ) );
+        }
+
+        private function print_stuff() {
+            var_dump( 'This is a test private function' );
+        }
+}
+
+class SecondaryClass extends FaisalPlugin 
+{
+
+
+    function __construct(){
+       // $this->print_stuff();
+    }
+
+
+
+    function register_post_type(){
+        $this->create_post_type(); // this will only run the create_post_type method if the class exists
+    }
 }
 
 if (class_exists('FaisalPlugin')) {
