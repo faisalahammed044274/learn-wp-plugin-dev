@@ -51,10 +51,10 @@ class FaisalPlugin
             flush_rewrite_rules();
         }
 
-        function uninstall() {
-            // delete CPT
-            // delete all the plugin data from the DB
-        }
+        // function uninstall() {
+        //     // delete CPT
+        //     // delete all the plugin data from the DB
+        // }
 
         function custom_post_type(){
             // register a custom post type
