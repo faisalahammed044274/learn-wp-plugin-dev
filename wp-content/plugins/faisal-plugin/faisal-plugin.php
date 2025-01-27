@@ -44,13 +44,16 @@ class FaisalPlugin
     function __construct() {
         add_action( 'init', array( $this, 'custom_post_type' ) );
         // this will only run the custom_post_type method if the class exists
-        $this->print_stuff(); // this will only run the register method if the class exists
+        //$this->print_stuff(); // this will only run the register method if the class exists
         $this->create_post_type();
     }
 
-    function register() {
-        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) ); // this will only run the enqueue method if the class exists
-    }
+    //static methods
+
+        public static function register() {
+            add_action( 'admin_enqueue_scripts', array( 'FaisalPlugin', 'enqueue' ) ); // this will only run the enqueue method if the class exists
+             ;
+        }
 
         function activate() {
             // generated a CPT
@@ -75,7 +78,7 @@ class FaisalPlugin
             register_post_type( 'book', ['public' => true, 'label' => 'Books'] );
         }
 
-        function enqueue() {
+        static function enqueue() {
             // enqueue all the scripts
             wp_enqueue_style( 'mypluginstyle', plugins_url( '/assets/my-style.css', __FILE__ ) );
             wp_enqueue_script( 'mypluginscript', plugins_url( '/assets/my-script.js', __FILE__ ) );
@@ -107,13 +110,14 @@ class SecondaryClass extends FaisalPlugin
 
 if (class_exists('FaisalPlugin')) {
     //instantiates the class / INSTANCE
-    $faisalPlugin = new FaisalPlugin(); // this will only run the constructor if the class exists
-    $faisalPlugin->register(); // this will only run the register method if the class exists
+    //$faisalPlugin = new FaisalPlugin(); // this will only run the constructor if the class exists
+    //$faisalPlugin->register(); // this will only run the register method if the class exists
+    FaisalPlugin::register();
 }
 
 // activation
-register_activation_hook( __FILE__, array( $faisalPlugin, 'activate' ) );
+//register_activation_hook( __FILE__, array( $faisalPlugin, 'activate' ) );
 // deactivation
-register_deactivation_hook( __FILE__, array( $faisalPlugin, 'deactivate' ) );
+//register_deactivation_hook( __FILE__, array( $faisalPlugin, 'deactivate' ) );
 // uninstall
 // register_uninstall_hook( __FILE__, array( $faisalPlugin, 'uninstall' ) );
