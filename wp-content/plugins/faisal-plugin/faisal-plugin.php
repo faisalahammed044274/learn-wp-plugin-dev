@@ -76,6 +76,7 @@ class FaisalPlugin
 }
 
 if (class_exists('FaisalPlugin')) {
+    //instantiates the class / INSTANCE
     $faisalPlugin = new FaisalPlugin(); // this will only run the constructor if the class exists
     $faisalPlugin->register(); // this will only run the register method if the class exists
 }
