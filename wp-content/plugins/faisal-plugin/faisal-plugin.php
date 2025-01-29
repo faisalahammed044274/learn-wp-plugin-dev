@@ -27,6 +27,11 @@ if (!class_exists('Inc\Activate') || !class_exists('Inc\Deactivate')) {
     error_log('Activate or Deactivate class not found. Run composer dump-autoload.');
 }
 
+// Check if the class exists before using it
+if (!class_exists('Inc\Admin\AdminPages')) {
+    error_log('AdminPages class not found. Run composer dump-autoload.');
+}
+
 // Activation & Deactivation Hooks
 register_activation_hook(__FILE__, array('Inc\Activate', 'activate'));
 register_deactivation_hook(__FILE__, array('Inc\Deactivate', 'deactivate'));
