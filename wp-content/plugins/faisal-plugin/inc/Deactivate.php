@@ -5,8 +5,9 @@
 *
 * @package Faisalplugin
 */
+namespace Inc;
 
-class FaisalPluginDeactivate{
+class Deactivate{
     public static function deactivate(){
         flush_rewrite_rules();
     }

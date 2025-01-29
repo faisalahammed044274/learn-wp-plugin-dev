@@ -1,12 +1,14 @@
 <?php 
 
 /**
- * Trigger this file on Plugin uninstall
  * 
  * @package Faisalplugin
+ * 
  */
+namespace Inc;
 
-class FaisalPluginActivate{
+class Activate
+{
     public static function activate(){
         flush_rewrite_rules();
     }

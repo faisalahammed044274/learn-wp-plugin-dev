@@ -22,6 +22,16 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 defined( 'ABSPATH' ) or die( 'Hey, you can\'t access this file, you silly human!' );
 
+if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
+    require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+}
+
+// Activation
+use Inc\Activate;
+// Deactivation
+use Inc\Deactivate;
+
+
 if (!class_exists('FaisalPlugin')) {
 
 class FaisalPlugin 
@@ -43,7 +53,7 @@ class FaisalPlugin
         }
 
         function settings_link( $links ) {
-            $settings_link = '<a href="options-genral.php?page=faisal_plugin">go to Settings</a>';
+            $settings_link = '<a href="admin.php?page=faisal_plugin">go to Settings</a>';
             array_push($links, $settings_link );
             return $links;
         }
@@ -75,13 +85,13 @@ class FaisalPlugin
 
         function activate(){
             require_once plugin_dir_path( file: __FILE__ ) . 'inc/faisal-plugin-activate.php';
-            FaisalPluginActivate::activate();
+            Activate::activate();
 
         }
 
         function deactivate(){
             require_once plugin_dir_path( file: __FILE__ ) . 'inc/faisal-plugin-deactivate.php';
-            FaisalPluginDeactivate::deactivate();
+            Deactivate::deactivate();
 
         }
     }
