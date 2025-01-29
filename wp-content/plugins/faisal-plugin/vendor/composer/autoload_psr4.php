@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'D2s\\FaisalPlugin\\' => array($baseDir . '/src'),
+    'Inc\\' => array($baseDir . '/inc'),
 );

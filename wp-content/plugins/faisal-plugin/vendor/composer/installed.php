@@ -3,7 +3,7 @@
         'name' => 'd2s/faisal-plugin',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '29b5a5eb075475a9061ddb1eefc8f769463dd1f8',
+        'reference' => '6a1c42bd14d9d4bd2ddf78dde0be6ae24c46bb8f',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'd2s/faisal-plugin' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '29b5a5eb075475a9061ddb1eefc8f769463dd1f8',
+            'reference' => '6a1c42bd14d9d4bd2ddf78dde0be6ae24c46bb8f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
