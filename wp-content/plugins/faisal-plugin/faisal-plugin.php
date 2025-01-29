@@ -26,9 +26,35 @@ if (!class_exists('FaisalPlugin')) {
 
 class FaisalPlugin 
 {
+
+    public $plugin;
+
+    function __construct() {
+        $this->plugin = plugin_basename( __FILE__ );
+    }
+
         function register() {
             add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) ); // this will only run the enqueue method if the class exists
              ;
+
+            add_action('admin_menu', array( $this, 'add_admin_pages' ) );
+
+            add_filter( "plugin_action_links_$this->plugin", array( $this, 'settings_link' ) );
+        }
+
+        function settings_link( $links ) {
+            $settings_link = '<a href="options-genral.php?page=faisal_plugin">go to Settings</a>';
+            array_push($links, $settings_link );
+            return $links;
+        }
+
+        function add_admin_pages() {
+            add_menu_page( 'Faisal Plugin', 'Faisal', 'manage_options', 'faisal_plugin', array( $this, 'admin_index' ), 'dashicons-store', 110 );
+        }
+
+        function admin_index() {
+            //require template
+            require_once plugin_dir_path( __FILE__ ) . 'templates/admin.php';
         }
 
         function custom_post_type(){
