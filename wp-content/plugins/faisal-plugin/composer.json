@@ -1,0 +1,19 @@
+{
+    "name": "d2s/faisal-plugin",
+    "description": "Awesome Plugin Development",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "D2s\\FaisalPlugin\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "faisalahammed044274",
+            "email": "faisalahammed044274@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
